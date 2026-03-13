@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Fun Hacker Prank</title>
+<title>Totally Normal Website</title>
 
 <style>
 
@@ -11,20 +11,36 @@ body{
   text-align:center;
 }
 
-/* hacker screen style */
-#hackerScreen{
-  display:none;
-  background:black;
-  color:#00ff00;
-  font-family: monospace;
-  height:100vh;
-  padding:20px;
-  text-align:left;
-}
+/* button */
 
 button{
   font-size:30px;
-  padding:15px;
+  padding:15px 40px;
+  background:purple;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:rgb(120,0,200);
+}
+
+/* hacker screen */
+
+#hacker{
+  display:none;
+  background:black;
+  color:#00ff00;
+  font-family:monospace;
+  height:100vh;
+  padding:30px;
+  text-align:left;
+}
+
+#terminal{
+  font-size:22px;
 }
 
 </style>
@@ -32,37 +48,36 @@ button{
 <script>
 
 let lines = [
-"Connecting to server...",
-"Bypassing firewall...",
-"Access granted ✔",
-"Downloading passwords...",
-"Decrypting files...",
-"System takeover complete."
+"Connecting to super secret server...",
+"Downloading memes...",
+"Bypassing school firewall...",
+"Accessing cat database...",
+"Sending prank signal...",
+"YOU GOT PRANKED 😜"
 ];
 
 let i = 0;
 
-function startHack(){
+function start(){
 
-  /* hide normal page */
-  document.getElementById("normalPage").style.display="none";
+document.getElementById("main").style.display="none";
+document.getElementById("hacker").style.display="block";
 
-  /* show hacker screen */
-  document.getElementById("hackerScreen").style.display="block";
+type();
 
-  typeLine();
 }
 
-function typeLine(){
+function type(){
 
-  if(i < lines.length){
+if(i < lines.length){
 
-    document.getElementById("terminal").innerHTML += lines[i] + "<br>";
+document.getElementById("terminal").innerHTML += lines[i] + "<br>";
 
-    i++;
+i++;
 
-    setTimeout(typeLine, 900);
-  }
+setTimeout(type,900);
+
+}
 
 }
 
@@ -72,22 +87,28 @@ function typeLine(){
 
 <body>
 
-<div id="normalPage">
+<div id="main">
 
-<h1>HELLO 😈</h1>
+<h1>HELLO 👀</h1>
+
+<h2>inte gjort av wille</h2>
 
 <img src="https://th.bing.com/th/id/OIP.yrQpOL7GLOF8-9x7C3fPpQHaFI?w=289&h=200&c=7&r=0&o=7&pid=1.7&rm=3" width="300">
 
 <br><br>
 
-<button onclick="startHack()">Click me!</button>
+<button onclick="start()">CLICK ME</button>
+
+<br><br>
+
+<img src="https://tse2.mm.bing.net/th/id/OIP.H4IqhU-WYF6jaHEk_o5-vQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" width="500">
 
 </div>
 
 
-<div id="hackerScreen">
+<div id="hacker">
 
-<h2>REMOTE ACCESS TERMINAL</h2>
+<h2>HACKER TERMINAL</h2>
 
 <div id="terminal"></div>
 
