@@ -7,81 +7,233 @@
 
 <style>
 
+/* ---------- PAGE STYLE ---------- */
+
 body{
-  background-color: lightblue;
-  font-family: Arial, sans-serif;
+  margin:0;
+  font-family:Arial, sans-serif;
   text-align:center;
+  background:linear-gradient(135deg,#6ec6ff,#b388ff);
 }
 
-/* main screen */
+/* ---------- START PAGE ---------- */
 
-#main{
-  padding-top:50px;
+#startPage{
+  padding-top:100px;
 }
 
 button{
   font-size:30px;
   padding:15px 40px;
-  background:purple;
-  color:white;
   border:none;
   border-radius:10px;
+  background:purple;
+  color:white;
   cursor:pointer;
 }
 
 button:hover{
-  background:rgb(130,0,200);
+  background:#7a00cc;
 }
 
-/* hacker screen */
+/* ---------- TERMINAL SCREEN ---------- */
 
-#hacker{
+#hackScreen{
   display:none;
   background:black;
-  color:#00ff00;
+  color:#00ff9c;
   font-family:monospace;
   height:100vh;
-  padding:30px;
+  padding:25px;
   text-align:left;
 }
 
 #terminal{
-  font-size:22px;
+  font-size:18px;
   line-height:1.6;
+}
+
+/* blinking cursor */
+
+.cursor{
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0}
+}
+
+/* progress bar */
+
+#progressBox{
+  width:500px;
+  height:20px;
+  border:1px solid #00ff9c;
+  margin-top:20px;
+}
+
+#progress{
+  height:100%;
+  width:0%;
+  background:#00ff9c;
 }
 
 </style>
 
 <script>
 
-let lines = [
-"Connecting to server...",
-"Bypassing firewall...",
-"Downloading memes...",
-"Accessing cat database...",
-"Sending prank signal...",
-"YOU GOT PRANKED 😜"
+/* ---------- TERMINAL LINES ---------- */
+
+const lines = [
+
+"> Initializing remote terminal...",
+"> Loading system libraries...",
+"> Connecting to target network...",
+"> Searching for active devices...",
+"> Device found: 192.168.0.24",
+"> Attempting handshake...",
+"> Handshake successful",
+
+"> Scanning open ports...",
+"> Port 21: OPEN",
+"> Port 80: OPEN",
+"> Port 443: OPEN",
+"> Port 8080: OPEN",
+
+"> Starting vulnerability scan...",
+"> Checking SSL certificates...",
+"> Weak encryption detected",
+
+"> Launching password attack...",
+"> Loading wordlist...",
+"> Wordlist size: 14,000 passwords",
+
+"> Attempt 102...",
+"> Attempt 488...",
+"> Attempt 1024...",
+"> Attempt 3240...",
+"> Attempt 5201...",
+
+"> Potential password match found",
+"> Verifying hash...",
+"> Decrypting authentication token...",
+
+"> ACCESS GRANTED",
+"> Extracting user credentials...",
+"> Downloading secure files...",
+"> Copying database...",
+"> Cleaning logs..."
+
 ];
 
-let i = 0;
+
+/* ---------- VARIABLES ---------- */
+
+let index = 0;
+
+
+/* ---------- START HACK ---------- */
 
 function startHack(){
 
-document.getElementById("main").style.display="none";
-document.getElementById("hacker").style.display="block";
+document.getElementById("startPage").style.display="none";
+document.getElementById("hackScreen").style.display="block";
 
 typeLine();
+moveBar();
 
 }
+
+
+/* ---------- TYPE TERMINAL TEXT ---------- */
 
 function typeLine(){
 
-if(i < lines.length){
+if(index < lines.length){
 
-document.getElementById("terminal").innerHTML += lines[i] + "<br>";
+document.getElementById("terminal").innerHTML += lines[index] + "<br>";
 
-i++;
+index++;
 
-setTimeout(typeLine,1000);
+setTimeout(typeLine,700);
 
 }
+
+else{
+
+document.getElementById("terminal").innerHTML += "<br>>> PASSWORD CRACKED SUCCESSFULLY";
+
+}
+
+}
+
+
+/* ---------- PROGRESS BAR ---------- */
+
+function moveBar(){
+
+let bar=document.getElementById("progress");
+
+let width=0;
+
+let interval=setInterval(function(){
+
+if(width>=100){
+
+clearInterval(interval);
+
+}
+
+else{
+
+width++;
+
+bar.style.width=width+"%";
+
+}
+
+},80);
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+<!-- START PAGE -->
+
+<div id="startPage">
+
+<h1>HELLO 👀</h1>
+
+<h2>inte gjort av wille</h2>
+
+<br>
+
+<button onclick="startHack()">CLICK ME</button>
+
+</div>
+
+
+
+<!-- TERMINAL PAGE -->
+
+<div id="hackScreen">
+
+<h2>REMOTE TERMINAL<span class="cursor">_</span></h2>
+
+<div id="terminal"></div>
+
+<br>
+
+<div id="progressBox">
+<div id="progress"></div>
+</div>
+
+</div>
+
+</body>
+</html>
