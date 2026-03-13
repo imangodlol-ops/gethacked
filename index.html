@@ -1,30 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<title>Hacker Screen</title>
+
+<style>
+body{
+  background:black;
+  color:#00ff00;
+  font-family: monospace;
+  font-size:20px;
+  padding:20px;
+}
+
+#terminal{
+  white-space:pre-line;
+}
+</style>
+
+<script>
+let text = [
+"Connecting to secure server...",
+"Bypassing firewall...",
+"Access granted ✔",
+"Downloading files...",
+"Password cracked!",
+"System control acquired..."
+];
+
+let i = 0;
+
+function typeLine(){
+  if(i < text.length){
+    document.getElementById("terminal").innerHTML += text[i] + "\n";
+    i++;
+    setTimeout(typeLine, 1000);
+  }
+}
+
+window.onload = typeLine;
+</script>
+
 </head>
+
 <body>
-    <h1>HELLO U HAVE BEEN HACKED</h1> 
+
+<h1>REMOTE ACCESS TERMINAL</h1>
+<div id="terminal"></div>
+
 </body>
 </html>
-<h1>inte gjort av wille</h1>
-<style>
-  body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
-  }
-  h1 {
-    color: darkblue;
-    text-align: center;
-  }
-  p {
-    font-size: 18px;
-  }
-</style>
-<img src=https://th.bing.com/th/id/OIP.yrQpOL7GLOF8-9x7C3fPpQHaFI?w=289&h=200&c=7&r=0&o=7&pid=1.7&rm=3 alt="Online Image" width="300">
-<a href="#" onclick="alert('You got hacked!!! 😜')" 
-   style="font-size: 30px; color: red; text-decoration: none;">
-   Click me!
-</a>
