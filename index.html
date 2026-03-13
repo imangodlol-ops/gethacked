@@ -1,51 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Hacker Screen</title>
+<title>Fun Hacker Prank</title>
 
 <style>
+
 body{
+  background-color: lightblue;
+  font-family: Arial;
+  text-align:center;
+}
+
+/* hacker screen style */
+#hackerScreen{
+  display:none;
   background:black;
   color:#00ff00;
   font-family: monospace;
-  font-size:20px;
+  height:100vh;
   padding:20px;
+  text-align:left;
 }
 
-#terminal{
-  white-space:pre-line;
+button{
+  font-size:30px;
+  padding:15px;
 }
+
 </style>
 
 <script>
-let text = [
-"Connecting to secure server...",
+
+let lines = [
+"Connecting to server...",
 "Bypassing firewall...",
 "Access granted ✔",
-"Downloading files...",
-"Password cracked!",
-"System control acquired..."
+"Downloading passwords...",
+"Decrypting files...",
+"System takeover complete."
 ];
 
 let i = 0;
 
-function typeLine(){
-  if(i < text.length){
-    document.getElementById("terminal").innerHTML += text[i] + "\n";
-    i++;
-    setTimeout(typeLine, 1000);
-  }
+function startHack(){
+
+  /* hide normal page */
+  document.getElementById("normalPage").style.display="none";
+
+  /* show hacker screen */
+  document.getElementById("hackerScreen").style.display="block";
+
+  typeLine();
 }
 
-window.onload = typeLine;
+function typeLine(){
+
+  if(i < lines.length){
+
+    document.getElementById("terminal").innerHTML += lines[i] + "<br>";
+
+    i++;
+
+    setTimeout(typeLine, 900);
+  }
+
+}
+
 </script>
 
 </head>
 
 <body>
 
-<h1>REMOTE ACCESS TERMINAL</h1>
+<div id="normalPage">
+
+<h1>HELLO 😈</h1>
+
+<img src="https://th.bing.com/th/id/OIP.yrQpOL7GLOF8-9x7C3fPpQHaFI?w=289&h=200&c=7&r=0&o=7&pid=1.7&rm=3" width="300">
+
+<br><br>
+
+<button onclick="startHack()">Click me!</button>
+
+</div>
+
+
+<div id="hackerScreen">
+
+<h2>REMOTE ACCESS TERMINAL</h2>
+
 <div id="terminal"></div>
+
+</div>
 
 </body>
 </html>
